@@ -4,5 +4,7 @@
 #   - containerd
 #   - kubernetes
 - hosts: haproxy
+  vars_files: 
+    - vars.yaml
   roles: 
-  - haproxy
+    - haproxy
