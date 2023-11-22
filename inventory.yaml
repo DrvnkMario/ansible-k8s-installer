@@ -1,0 +1,31 @@
+global:
+  children:
+    kubernetes:
+      children:
+        masters:
+          hosts:
+            kubernetes-master-01-01: 
+              ansible_host: 192.168.1.220
+            kubernetes-master-01-02:
+              ansible_host: 192.168.1.221
+            kubernetes-master-02-01:
+              ansible_host: 192.168.1.224
+            kubernetes-master-02-02:
+              ansible_host: 192.168.1.225
+        workers:
+          hosts:
+            kubernetes-slave-01-01:
+              ansible_host: 192.168.1.222
+            kubernetes-slave-01-02:
+              ansible_host: 192.168.1.223
+            kubernetes-slave-02-01:
+              ansible_host: 192.168.1.226
+            kubernetes-slave-02-02:
+              ansible_host: 192.168.1.227
+    haproxy:
+      hosts:
+        haproxy-01-01:
+          ansible_host: 192.168.1.230
+        haproxy-02-01:
+          ansible_host: 192.168.1.231
+

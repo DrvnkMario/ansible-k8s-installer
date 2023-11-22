@@ -1,0 +1,32 @@
+---
+- name: Update apt packages
+  become: true
+  ansible.builtin.apt:
+    upgrade: "full"
+    update_cache: true
+
+- name: Install haproxy and keepalived
+  become: true
+  ansible.builtin.apt: 
+    name:
+      - haproxy
+      - keepalived
+    state: present
+
+- name: Backup default containerd configuration
+  become: true
+  ansible.builtin.shell:
+    cmd: "[ -f /etc/haproxy/haproxy.cfg.backup ] || cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup"
+
+- name: Upload haproxy.cfg to servers
+  become: true
+  ansible.builtin.template:
+    src: templates/haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+
+- name: Enable haproxy service
+  become: true
+  ansible.builtin.service:
+    name: haproxy
+    state: restarted
+    enabled: true

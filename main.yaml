@@ -1,0 +1,8 @@
+---
+# - hosts: kubernetes
+#   roles: 
+#   - containerd
+#   - kubernetes
+- hosts: haproxy
+  roles: 
+  - haproxy
