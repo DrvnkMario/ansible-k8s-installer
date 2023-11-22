@@ -34,8 +34,8 @@
 - name: Upload keepalived.cfg to servers
   become: true
   ansible.builtin.template:
-    src: templates/keepalived.cfg.j2
-    dest: /etc/keepalived/keepalived.cfg
+    src: templates/keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
 
 - name: Enable keepalived service
   become: true
